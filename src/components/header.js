@@ -6,7 +6,7 @@ import icons from "../ultis/icon";
 const { BsArrowRight, BsArrowLeft } = icons;
 const Header = () => {
   return (
-    <div className="flex justify-between w-full items-center px-10 ">
+    <div className="flex justify-between w-full items-center px-14 ">
       <div className="flex gap-6 w-full items-center">
         <div className="flex gap-6">
           <span>

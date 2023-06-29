@@ -4,6 +4,9 @@ module.exports = {
 "./public/index.html"],
   theme: {
     extend: {
+      fontFamily:{
+        'inter' : 'font-style: Inter'
+      },
       textColor :{
         'main': '#fff',
         'main-100' : '#ffffff80',
@@ -64,5 +67,8 @@ module.exports = {
       '1600' : '1600px'
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    require('tailwind-scrollbar'),
+  ],
 }

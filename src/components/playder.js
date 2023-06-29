@@ -24,8 +24,8 @@ const Playder = () => {
   useEffect(() => {
     const fetchDataSong = async () => {
       const [result1, result2] = await Promise.all([
-        apis.getDetailSong(curSongId),
-        apis.getSong(curSongId),
+        apis.apiGetDetailSong(curSongId),
+        apis.apiGetSong(curSongId),
       ]);
 
       if (result1.data.err === 0) {
@@ -43,7 +43,7 @@ const Playder = () => {
   const handleClickPlay = () => {
   }
   return (
-    <div className="px-5 flex h-full overflow-hidden ">
+    <div className="px-5 flex h-full  ">
       <div className="w-[30%] flex-auto flex items-center gap-4">
         <img
           src={Result2Info?.thumbnail}

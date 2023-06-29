@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getArrSlider } from "../ultis/fn";
 import * as actions from '../store/actions'
+import { useNavigate } from "react-router-dom";
 
 const Slider = () => {
   const { banner } = useSelector((state) => state.app);
   const dispatch = useDispatch();
+  const Navigate = useNavigate()
 
   useEffect(() => {
     const sliderEls = document.getElementsByClassName("slider-app");
@@ -57,7 +59,7 @@ const Slider = () => {
       sttStart =
         sttStart === sliderEls.length - 1 ? (sttStart = 0) : (sttStart += 1);
       sttEnd = sttEnd === sliderEls.length - 1 ? (sttEnd = 0) : (sttEnd += 1);
-    }, 3000);
+    }, 4500);
 
     return () => {
       intervalId && clearInterval(intervalId);
@@ -68,8 +70,10 @@ const Slider = () => {
     if (item?.type === 1) {
       dispatch(actions.setCurSongId(item.encodeId))
       dispatch(actions.isPlay(true))
-
-      
+    }
+    if(item?.type === 4) {
+      const albumPath = item?.link?.split('.')[0]
+      Navigate(albumPath)
     }
   };
   return (

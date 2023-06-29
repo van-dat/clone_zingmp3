@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import { RiDonutChartLine } from "react-icons/ri";
 import { FcLineChart } from "react-icons/fc";
-import { PiMusicNotesPlus, PiRepeatThin,PiPlayCircleThin, PiShuffleThin,PiPauseCircleLight} from "react-icons/pi";
+import { PiMusicNotesPlus, PiRepeatThin,PiPlayCircleThin, PiShuffleThin,PiPauseCircleLight,PiMusicNotesSimple,PiArrowsDownUpFill} from "react-icons/pi";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
@@ -29,7 +29,9 @@ const icons = {
   PiPlayCircleThin,
   MdSkipNext,
   PiShuffleThin,
-  PiPauseCircleLight
+  PiPauseCircleLight,
+  PiMusicNotesSimple,
+  PiArrowsDownUpFill
 };
 
 export default icons;
