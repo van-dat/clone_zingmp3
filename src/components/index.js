@@ -7,6 +7,8 @@ export {default as Playder} from './playder'
 export {default as ListSong} from './listSong'
 export {default as ItemSong} from './itemSong'
 export {default as Section} from './section'
+export {default as AudioLoad} from './audioLoad'
+
 
 
 

@@ -3,35 +3,44 @@ import { useParams } from "react-router-dom";
 import * as apis from "../../api";
 import moment from "moment";
 import { ListSong } from "../../components";
-import { useDispatch } from "react-redux";
-import * as actions from '../../store/actions'
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "../../store/actions";
+import icons from "../../ultis/icon";
+import { AudioLoad } from "../../components";
+
 const Playlist = () => {
+  const { PiPlayCircleThin } = icons;
   const { pid } = useParams();
   const [playList, setplayList] = useState({});
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
+  const { isPlaying, songs } = useSelector((state) => state.music);
   useEffect(() => {
     const fetchDataPlayList = async () => {
       const reponse = await apis.apiGetDetailPlayList(pid);
-      console.log(reponse)
       if (reponse?.data.err === 0) {
         setplayList(reponse.data?.data);
-        dispatch(actions.playAlbum(reponse?.data?.data?.song?.items))
+        dispatch(actions.playAlbum(reponse?.data?.data?.song?.items));
       }
     };
     fetchDataPlayList();
   }, [pid]);
-  return ( 
+  return (
     <div className="flex flex-col overflow-hidden px-14 py-8  ">
-      
       <div className="flex w-full gap-6">
-        <div className="w-[30%] flex-none flex gap-3 flex-col ">
-          <img
-            src={playList?.thumbnailM}
-            alt="thumbnail"
-            className="rounded-lg shadow-sm"
-          />
-          <div className="flex flex-col items-center text-main-100 gap-1  text-xs">
+        <div className="w-[30%] flex-none flex gap-3 flex-col  ">
+          <div className="w-full overflow-hidden relative group/edit hover:rounded-lg">
+            <img
+              src={playList?.thumbnailM}
+              alt="thumbnail"
+              className={`shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up`}
+            />
+            <div className=" w-full absolute top-0 bottom-0 left-0 right-0 group-hover/edit:bg-bg-layd   group-hover/edit:visible">
+              <span className="flex h-full justify-center items-center text-white">
+                {isPlaying ? <span className=" drop-shadow-lg p-2 rounded-full border border-white"><AudioLoad/></span> : <PiPlayCircleThin  size={48}/>}
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-col items-center  text-main-100 gap-1  text-xs">
             <h3 className="text-xl font-bold text-main ">{playList?.title}</h3>
             <span className="text-md">
               Cập nhật :
@@ -56,28 +65,7 @@ const Playlist = () => {
           />
         </div>
       </div>
-      <div className=""><div className="w-[30%] flex-none flex gap-3 flex-col ">
-          <img
-            src={playList?.thumbnailM}
-            alt="thumbnail"
-            className="rounded-lg shadow-sm"
-          /> 
-          <div className="flex flex-col items-center text-main-100 gap-1  text-xs">
-            <h3 className="text-xl font-bold text-main ">{playList?.title}</h3>
-            <span className="text-md">
-              Cập nhật :
-              <span className="pl-1">
-                {moment(playList?.contentLastUpdate).format("DD/MM/YYYY")}
-              </span>
-            </span>
-            <span>{playList?.artistsNames}</span>
-            <span>{`${Math.round(
-              playList?.like / 1000
-            )}K người yêu thích`}</span>
-          </div>
-        </div></div>
     </div>
-    
   );
 };
 

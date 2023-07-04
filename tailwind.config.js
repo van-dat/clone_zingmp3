@@ -19,11 +19,13 @@ module.exports = {
         'sider-left':'#221b2e',
         'sider-right':'#170f23',
         'play-list':'#130c1c',
-        'hover':'#ffffff1a'
+        'hover':'#ffffff1a',
+        'bg-layd':'rgba(0,0,0,0.3)'
       },
       borderColor: {
         default:'#ffffff1a'
       },
+      
       keyframes : {
         'slide-right': {
           '0%': {
@@ -54,6 +56,28 @@ module.exports = {
             '-webkit-transform':  'translateX(0);',
                     transform:  'translateX(0);',
           }
+        },
+        'scale-up': {
+          '0%': {
+            '-webkit-transform':  'scale(1);',
+                    transform:  'scale(1);',
+          },
+          '100%':{
+            '-webkit-transform':  'scale(1.1);',
+                    transform:  'scale(1.1);',
+          }
+
+        },
+        'scale-up-back': {
+          '0%': {
+            '-webkit-transform':  'scale(1.1);',
+                    transform:  'scale(1.1);',
+          },
+          '100%':{
+            '-webkit-transform':  'scale(1);',
+                    transform:  'scale(1);',
+          }
+          
         }
         
       },
@@ -61,6 +85,9 @@ module.exports = {
         'slide-right' : 'slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;',
         'slide-left' : 'slide-left 0.5s ease-in-out both;',
         'slide-left2' : 'slide-left2 0.5s ease-in-out both;',
+        'scale-up' : 'scale-up  .8s ease-out alternate both;',
+        'scale-up-back' : 'scale-up-back  .8s ease-out both;',
+
 
       }
 

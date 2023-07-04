@@ -42,7 +42,7 @@ const ItemSong = ({ songData }) => {
       {/* ALBUM */}
       <div className="  flex-1 flex justify-center items-center text-xs whitespace-nowrap">
         {songData?.album?.title?.length > 30
-          ? `${songData?.album?.title?.slice(0, 30)}...`
+          ? `${songData?.album?.title?.slice(0, 15)}...`
           : songData?.album?.title}
       </div>
         {/* time */}

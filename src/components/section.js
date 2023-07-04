@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const Section = () => {
   const { daily } = useSelector((state) => state.app);
   const Navigate = useNavigate()
-  console.log(daily);
   return (
     <div className="px-9 flex flex-col gap-2">
       <div className="flex justify-between items-center ">
@@ -19,11 +18,12 @@ const Section = () => {
               key={item.encodeId}
               className="flex w-full flex-col w-1/5 gap-2  "
             >
-              <div className="cursor-pointer" onClick={()=>{
+              <div className="cursor-pointer " 
+              onClick={()=>{
                 Navigate(item?.link?.split('.')[0])
                 
               }}>
-              <img src={item.thumbnailM} alt="avatar" />
+              <img src={item.thumbnailM} alt="avatar" className="rounded-md" />
 
               </div>
 
