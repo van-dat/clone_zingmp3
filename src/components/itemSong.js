@@ -1,12 +1,21 @@
 import React, { memo } from "react";
 import icons from "../ultis/icon";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import * as actions from '../store/actions'
 
+const { PiMusicNotesSimple } = icons;
 const ItemSong = ({ songData }) => {
-  console.log(songData);
-  const { PiMusicNotesSimple } = icons;
+  const dispatch = useDispatch()
   return (
-    <div className="flex justify-between  text-main-100 border-b   border-b-[#ffffff0d]  rounded-[5px]">
+    <div 
+    className="flex justify-between  text-main-100 border-b cursor-pointer   border-b-[#ffffff0d]  rounded-[5px] hover:bg-hover"
+    onClick={() => {
+      dispatch(actions.setCurSongId(songData.encodeId))
+      dispatch(actions.isPlay(true))
+      dispatch(actions.acAlbum(true))
+    }}
+    >
       <div className="flex items-center gap-2 p-2 flex-1">
         <span>
           <PiMusicNotesSimple />
@@ -24,14 +33,24 @@ const ItemSong = ({ songData }) => {
               ? `${songData?.title?.slice(0, 15)}...`
               : songData?.title}
           </span>
-          <span className="text-xs">{songData?.artistsNames}</span>
+          
+          <span className="text-xs flex items-center">
+            {songData?.artistsNames}
+          </span>
         </div>
       </div>
-      <div className="  flex-1 flex justify-center text-xs whitespace-nowrap">{songData?.album?.title?.length > 30
-              ? `${songData?.album?.title?.slice(0, 30)}...`: songData?.album?.title}</div>
-      <div className="flex-1 flex justify-end ">{moment.utc(songData?.duration *1000).format('mm:ss')}</div>
-      
-       
+      {/* ALBUM */}
+      <div className="  flex-1 flex justify-center items-center text-xs whitespace-nowrap">
+        {songData?.album?.title?.length > 30
+          ? `${songData?.album?.title?.slice(0, 30)}...`
+          : songData?.album?.title}
+      </div>
+        {/* time */}
+      <div className="flex-1    text-xs ">
+        <span className="float-right pr-4 h-full flex items-center ">
+        {moment.utc(songData?.duration * 1000).format("mm:ss")}
+        </span>
+      </div>
     </div>
   );
 };

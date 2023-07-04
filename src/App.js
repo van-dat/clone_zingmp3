@@ -1,29 +1,44 @@
-import './index.scss';
-import {Home, Login, Public, Personal, Playlist} from './containers/public'
-import { useDispatch } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
-import Path from './ultis/path';
-import { useEffect } from 'react';
-import * as actions from './store/actions'
-
+import "./index.scss";
+import { Home, Login, Public, Personal, Playlist } from "./containers/public";
+import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import Path from "./ultis/path";
+import { useEffect } from "react";
+import * as actions from "./store/actions";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatch = useDispatch(
-    useEffect(()=>{
-      dispatch(actions.getHome())
-    },[])
-  )
-  return (
+    useEffect(() => {
+      dispatch(actions.getHome());
+    }, [])
+  );
+  return (<>
     <div className="App ">
       <Routes>
-        <Route path={Path.PUBLIC} element={<Public/>}>
-          <Route path={Path.HOME} element={<Home/>}/>
-          <Route path={Path.MYMUSIC} element={<Personal/>}/>
-          <Route path={Path.PLAYLIST__TITLE__PID} element={<Playlist/>}/>
-          <Route path={Path.LOGIN} element={<Login/>}/>
+        <Route path={Path.PUBLIC} element={<Public />}>
+          <Route path={Path.HOME} element={<Home />} />
+          <Route path={Path.MYMUSIC} element={<Personal />} />
+          <Route path={Path.ALBUM__TITLE__PID} element={<Playlist />} />
+          <Route path={Path.PLAYLIST__TITLE__PID} element={<Playlist />} />
+
+          <Route path={Path.LOGIN} element={<Login />} />
         </Route>
       </Routes>
     </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+  </>
   );
 }
 

@@ -59,7 +59,7 @@ const Slider = () => {
       sttStart =
         sttStart === sliderEls.length - 1 ? (sttStart = 0) : (sttStart += 1);
       sttEnd = sttEnd === sliderEls.length - 1 ? (sttEnd = 0) : (sttEnd += 1);
-    }, 4500);
+    }, 4000);
 
     return () => {
       intervalId && clearInterval(intervalId);
@@ -70,10 +70,15 @@ const Slider = () => {
     if (item?.type === 1) {
       dispatch(actions.setCurSongId(item.encodeId))
       dispatch(actions.isPlay(true))
+      dispatch(actions.playAlbum(null))
+
     }
     if(item?.type === 4) {
       const albumPath = item?.link?.split('.')[0]
       Navigate(albumPath)
+      
+    }else{
+      dispatch(actions.playAlbum(null))
     }
   };
   return (

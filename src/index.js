@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import reduxConfig from "./redux";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import 'react-toastify/dist/ReactToastify.css';
 const {store, persistor} = reduxConfig();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

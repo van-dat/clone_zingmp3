@@ -10,7 +10,9 @@ module.exports = {
       textColor :{
         'main': '#fff',
         'main-100' : '#ffffff80',
-        'play':'#c273ed'
+        'play':'#c273ed',
+        'main-200':'#c273e',
+
       },
       backgroundColor: {
         main:'#170f23',

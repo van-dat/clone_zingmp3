@@ -5,11 +5,26 @@
 
 
 
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff1a;
+  border:2px solid transparent; 
+  border-radius: 100rem;
+  height: 10%;
+}
+::-webkit-scrollbar-track {
+  background-color: #170f23;
+  height: 16px;
+
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
