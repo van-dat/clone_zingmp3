@@ -18,7 +18,7 @@ const SidebarLeft = () => {
         <img src={logo} className="w-[120px]  object-content" alt="logo" />
       </div>
       <div>
-        {sidbarMenu.map((item) => (
+        {sidbarMenu?.map((item) => (
           <NavLink
           
             to={item.path}

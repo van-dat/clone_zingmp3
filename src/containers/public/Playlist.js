@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import * as apis from "../../api";
 import moment from "moment";
 import { ListSong } from "../../components";
@@ -7,23 +7,37 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../store/actions";
 import icons from "../../ultis/icon";
 import { AudioLoad } from "../../components";
-
+  
 const Playlist = () => {
+  const localtion = useLocation()
   const { PiPlayCircleThin } = icons;
   const { pid } = useParams();
-  const [playList, setplayList] = useState({});
   const dispatch = useDispatch();
-  const { isPlaying, songs } = useSelector((state) => state.music);
+  const [playList, setplayList] = useState({});
+  const { isPlaying } = useSelector((state) => state.music);
   useEffect(() => {
+    dispatch(actions.loading(true))
     const fetchDataPlayList = async () => {
       const reponse = await apis.apiGetDetailPlayList(pid);
+      dispatch(actions.loading(false))
       if (reponse?.data.err === 0) {
-        setplayList(reponse.data?.data);
+        setplayList(reponse?.data?.data);
         dispatch(actions.playAlbum(reponse?.data?.data?.song?.items));
       }
     };
+
     fetchDataPlayList();
   }, [pid]);
+
+  useEffect(() => {
+      if(localtion?.state?.playAblum && playList) {
+        const indexFirst = playList?.song?.items[0]
+        dispatch(actions.setCurSongId(indexFirst?.encodeId))
+        dispatch(actions.isPlay(true))
+      }
+  }, [pid, playList]);
+
+
   return (
     <div className="flex flex-col overflow-hidden px-14 py-8  ">
       <div className="flex w-full gap-6">
@@ -32,7 +46,7 @@ const Playlist = () => {
             <img
               src={playList?.thumbnailM}
               alt="thumbnail"
-              className={`shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up`}
+              className="shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up"
             />
             <div className=" w-full absolute top-0 bottom-0 left-0 right-0 group-hover/edit:bg-bg-layd   group-hover/edit:visible">
               <span className="flex h-full justify-center items-center text-white">

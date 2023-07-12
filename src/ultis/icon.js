@@ -4,7 +4,8 @@ import {
   MdSkipPrevious,
   MdSkipNext,
 } from "react-icons/md";
-import { RiDonutChartLine } from "react-icons/ri";
+import { RiDonutChartLine ,RiPlayMiniFill } from "react-icons/ri";
+import { IoVolumeMediumOutline, IoVolumeMuteOutline,IoVolumeHighOutline  } from "react-icons/io5";
 import { FcLineChart } from "react-icons/fc";
 import {
   PiMusicNotesPlus,
@@ -15,12 +16,19 @@ import {
   PiMusicNotesSimple,
   PiArrowsDownUpFill,
   PiDotOutlineFill,
-  PiRepeatOnceThin
+  PiRepeatOnceThin,
+  PiPlaylistDuotone
 } from "react-icons/pi";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { BiSearch } from "react-icons/bi";
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiMoreHorizontal,} from "react-icons/fi";
+import { VscChromeRestore,} from "react-icons/vsc";
+import { LiaMicrophoneAltSolid,} from "react-icons/lia";
+import { TfiAlarmClock} from "react-icons/tfi";
+
+
+
 
 const icons = {
   MdOutlineLibraryMusic,
@@ -43,7 +51,15 @@ const icons = {
   PiMusicNotesSimple,
   PiArrowsDownUpFill,
   PiDotOutlineFill,
-  PiRepeatOnceThin
+  PiRepeatOnceThin,
+  PiPlaylistDuotone,
+  IoVolumeMediumOutline,
+  IoVolumeHighOutline,
+  IoVolumeMuteOutline,
+  VscChromeRestore,
+  LiaMicrophoneAltSolid,
+  RiPlayMiniFill,
+  TfiAlarmClock
 };
 
 export default icons;

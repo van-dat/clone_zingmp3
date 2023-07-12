@@ -1,5 +1,5 @@
 import "./index.scss";
-import { Home, Login, Public, Personal, Playlist } from "./containers/public";
+import { Home, Login, Public, Personal, Playlist ,WeekChart, ZingChart} from "./containers/public";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import Path from "./ultis/path";
@@ -21,7 +21,8 @@ function App() {
           <Route path={Path.MYMUSIC} element={<Personal />} />
           <Route path={Path.ALBUM__TITLE__PID} element={<Playlist />} />
           <Route path={Path.PLAYLIST__TITLE__PID} element={<Playlist />} />
-
+          <Route path={Path.WEEKCHART__TITLE__PID} element={<WeekChart />} />
+          <Route path={Path.ZINGCHART} element={<ZingChart />} />
           <Route path={Path.LOGIN} element={<Login />} />
         </Route>
       </Routes>

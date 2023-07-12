@@ -17,3 +17,7 @@ export const playAlbum = (songs) => ({
     type: actionType.PLAYLIST_ALBUM,
     songs
 })
+export const loading = (flag) => ({
+    type: actionType.LOADING,
+    flag
+})

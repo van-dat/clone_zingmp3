@@ -8,26 +8,84 @@
 ::-webkit-scrollbar {
   width: 4px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #ffffff1a;
-  border:2px solid transparent; 
+  border: 2px solid transparent;
   border-radius: 100rem;
   height: 10%;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #170f23;
   height: 16px;
 
 }
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
 }
 
 code {
   font-family: 'Inter', sans-serif;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  /* Ẩn giao diện mặc định trong WebKit/Blink */
+  width: 70px;
+  height: 3px;
+  background: #ffffff1a;
+  /* Màu nền của thanh track */
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.text-shadow-1 {
+  text-shadow:
+    1px 1px 0  transparent,
+    -1px 1px 0  transparent,
+    -1px -1px 0  transparent,
+    1px -1px 0  transparent,
+}
+.text-stroke-1 {
+  -webkit-text-stroke-width: 1px; /* Điều chỉnh kích thước của chỉ viền */
+  -webkit-text-stroke-color: #4a90e2; /* Điều chỉnh màu sắc của chỉ viền */
+}
+
+.text-shadow-2 {
+  text-shadow:
+  1px 1px 0  transparent,
+  -1px 1px 0  transparent,
+  -1px -1px 0  transparent,
+  1px -1px 0  transparent,
+}
+.text-stroke-2 {
+  -webkit-text-stroke-width: 1px; /* Điều chỉnh kích thước của chỉ viền */
+  -webkit-text-stroke-color: #27bc9c; /* Điều chỉnh màu sắc của chỉ viền */
+}
+
+.text-shadow-3 {
+  text-shadow:
+  1px 1px 0  transparent,
+  -1px 1px 0  transparent,
+  -1px -1px 0  transparent,
+  1px -1px 0  transparent,
+
+}
+.text-stroke-3 {
+  -webkit-text-stroke-width: 1px; /* Điều chỉnh kích thước của chỉ viền */
+  -webkit-text-stroke-color: #e35050; /* Điều chỉnh màu sắc của chỉ viền */
+}

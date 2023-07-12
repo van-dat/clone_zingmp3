@@ -20,14 +20,14 @@ const Slider = () => {
         sliderEls[i].classList?.remove(
           "animate-slide-right",
           "order-last",
-          "z-20"
+          
         );
         sliderEls[i].classList?.remove(
           "animate-slide-left",
           "order-first",
-          "z-10"
+          
         );
-        sliderEls[i].classList?.remove("animate-slide-left2", "order-2", "z-10");
+        sliderEls[i].classList?.remove("animate-slide-left2", "order-2", );
 
         if (list.some((item) => item === i)) {
           sliderEls[i].style.cssText = `display: block`;
@@ -35,24 +35,24 @@ const Slider = () => {
           sliderEls[i].style.cssText = `display: none`;
         }
       }
-      list.forEach((item) => {
+      list?.forEach((item) => {
         if (item === sttEnd) {
           sliderEls[item].classList.add(
             "animate-slide-right",
             "order-last",
-            "z-20"
+            
           );
         } else if (item === sttStart) {
-          sliderEls[item].classList.add(
+          sliderEls[item]?.classList.add(
             "animate-slide-left",
             "order-first",
-            "z-10"
+            
           );
         } else {
-          sliderEls[item].classList.add(
+          sliderEls[item]?.classList.add(
             "animate-slide-left2",
             "order-2",
-            "z-10"
+            
           );
         }
       });
@@ -82,7 +82,7 @@ const Slider = () => {
     }
   };
   return (
-    <div className=" overflow-hidden w-full ">
+    <div className=" overflow-hidden w-full">
       <div className="flex w-full gap-4 p-8 justify-center ">
         {banner?.map((item, index) => (
           <img
