@@ -124,6 +124,7 @@ const ChartRank = () => {
     <div className="flex p-9 relative h-[400px] max-h-[400px] rounded-md  ">
       <div className="absolute top-4 bottom-9 left-9 right-9 bg-chart-bg rounded-md "></div>
       <div className="absolute top-4 bottom-9 left-9 right-9 bg-chart p-3 rounded-md flex flex-col gap-5 ">
+        {/* ZINGCHART */}
         <div className="flex items-center gap-2">
           <Link to={Path.ZINGCHART} >
           <h3 className="bg-gradient-to-r text-2xl font-bold bg-clip-text text-transparent from-[#ff9357] from-10% to-[#9100ff]">
@@ -135,6 +136,7 @@ const ChartRank = () => {
           </span>
         </div>
         <div className="flex gap-3">
+          {/* TOP */}
           <div className="flex-4 flex flex-col w-full  gap-2 ">
             {rank?.items
               ?.filter((item, index) => index < 3)
@@ -150,6 +152,7 @@ const ChartRank = () => {
                     encodeId={item.encodeId}
                     order={index + 1}
                     percent={Math.round((item.score / chart?.totalScore) * 100)}
+                    btn
                   />
                 </div>
               ))}

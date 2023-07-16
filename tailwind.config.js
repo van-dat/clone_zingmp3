@@ -12,6 +12,7 @@ module.exports = {
         'main-100' : '#ffffff80',
         'play':'#c273ed',
         'main-200':'#c273e',
+        'btn':'#9b4de0'
 
       },
       backgroundColor: {
@@ -30,11 +31,14 @@ module.exports = {
         'active' : '#ffffff4d'
       },
       borderColor: {
-        default:'#ffffff1a'
+        default:'#ffffff1a',
+        bf:'rgba(255,255,255,0.1)',
+        'btn':'#9b4de0',
       },
       flex: {
         '6':'6 6 0%',
         '4':'4 4 0%',
+        '5':'5 5 0%',
         '7':'7 7 0%',
         '3':'3 3 0%',
 

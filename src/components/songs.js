@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 import * as actions from "../store/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch   } from "react-redux";
 import moment from "moment";
 import "moment/locale/vi";
+import { BiTennisBall } from "react-icons/bi";
 
 const Songs = ({
   thumbnail,
@@ -12,16 +13,23 @@ const Songs = ({
   encodeId,
   order,
   percent,
+  btn,
+  Song,
+  time,
+  Style
+  
 }) => {
   const dispatch = useDispatch();
   return (
     <div
-      className={`w-full flex items-center p-2 text-white cursor-pointer hover:bg-hover rounded-md ${
-        order && "justify-between"
+      className={`w-full flex items-center p-2 text-white cursor-pointer hover:bg-hover rounded-md  ${
+        BiTennisBall && "justify-between"
       }`}
       onClick={() => {
-        releaseDate && dispatch(actions.setCurSongId(encodeId));
-        releaseDate && dispatch(actions.isPlay(true));
+        btn && dispatch(actions.setCurSongId(encodeId));
+        btn && dispatch(actions.isPlay(true));
+        dispatch(actions.setRecentSong({thumbnail,title, artistsNames,encodeId}))
+
       }}
     >
       <div className="flex gap-3 items-center">
@@ -29,10 +37,11 @@ const Songs = ({
         <img
           src={thumbnail}
           alt="thumbnail"
-          className="h-[55px] w-[55px] rounded-md object-contain"
+          className={Style || 'h-[55px] w-[55px] rounded-md object-contain'}
         />
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
+          {Song && <span className="text-xs text-main-100">{Song}</span>}
           <span className="text-sm font-medium">{`${
             title?.length > 25 ? `${title.slice(0, 20)}...` : `${title}`
           }`}</span>
@@ -49,6 +58,7 @@ const Songs = ({
         </div>
       </div>
       {percent && <span>{`${percent}%`}</span>}
+      {time && <span>{moment.utc(time * 1000).format('mm:ss')}</span>}
     </div>
   );
 };

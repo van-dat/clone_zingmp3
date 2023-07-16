@@ -13,7 +13,7 @@ const NewRelease = () => {
       : isActive === 1
       ? setsongArea(newRelease?.items?.vPop)
       : setsongArea(newRelease?.items?.others);
-  }, [isActive]);
+  }, [isActive, newRelease]);
   return (
     <div className="px-9 py-5 flex flex-col gap-2 ">
       <div className="flex justify-between items-center  pb-2 ">
@@ -49,21 +49,24 @@ const NewRelease = () => {
           QUỐC TẾ
         </button>
       </div>
+      {songArea && 
       <div className="flex flex-wrap gap-1">
-        {songArea
-          ?.filter((item, index) => index < 12)
-          ?.map((item) => (
-            <div key={item.encodeId} className="laptop:w-[31%] flex tablet:w-[45%]">
-              <Songs
-                thumbnail={item.thumbnail}
-                artistsNames={item.artistsNames}
-                releaseDate={item.releaseDate}
-                title={item.title}
-                encodeId={item.encodeId}
-              />
-            </div>
-          ))}
-      </div>
+      {songArea
+        ?.filter((item, index) => index < 12)
+        ?.map((item) => (
+          <div key={item.encodeId} className="laptop:w-[31%] flex tablet:w-[45%]">
+            <Songs
+              thumbnail={item.thumbnail}
+              artistsNames={item.artistsNames}
+              releaseDate={item.releaseDate}
+              title={item.title}
+              encodeId={item.encodeId}
+              btn
+            />
+          </div>
+        ))}
+    </div>
+      }
     </div>
   );
 };

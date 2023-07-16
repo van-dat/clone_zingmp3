@@ -13,6 +13,10 @@ export {default as AppLoading} from './appLoading'
 export {default as NewRelease} from './newRelease'
 export {default as Songs} from './songs'
 export {default as ChartRank} from './chartRank'
+export {default as SectionItem} from './SectionItem'
+export {default as Artists} from './artists'
+
+
 
 
 

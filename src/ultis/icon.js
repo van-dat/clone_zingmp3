@@ -4,7 +4,7 @@ import {
   MdSkipPrevious,
   MdSkipNext,
 } from "react-icons/md";
-import { RiDonutChartLine ,RiPlayMiniFill } from "react-icons/ri";
+import { RiDonutChartLine ,RiPlayMiniFill,RiUserAddLine } from "react-icons/ri";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline,IoVolumeHighOutline  } from "react-icons/io5";
 import { FcLineChart } from "react-icons/fc";
 import {
@@ -59,7 +59,8 @@ const icons = {
   VscChromeRestore,
   LiaMicrophoneAltSolid,
   RiPlayMiniFill,
-  TfiAlarmClock
+  TfiAlarmClock,
+  RiUserAddLine
 };
 
 export default icons;

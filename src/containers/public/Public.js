@@ -9,6 +9,7 @@ const Public = () => {
   return (
     <div className="w-full flex h-screen flex-col bg-main relative overflow-hidden ">
       <div className="w-full flex flex-auto h-full">
+        {/* slide left */}
         <div className="w-[240px] flex-none bg-sider-left">
           <SidebarLeft />
         </div>

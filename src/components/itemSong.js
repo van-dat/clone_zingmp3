@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import icons from "../ultis/icon";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch  } from "react-redux";
 import * as actions from '../store/actions'
 
 const { PiMusicNotesSimple } = icons;
@@ -11,9 +11,10 @@ const ItemSong = ({ songData }) => {
     <div 
     className="flex justify-between  text-main-100 border-b cursor-pointer   border-b-[#ffffff0d]  rounded-[5px] hover:bg-hover"
     onClick={() => {
-      dispatch(actions.setCurSongId(songData.encodeId))
-      dispatch(actions.isPlay(true))
-      dispatch(actions.acAlbum(true))
+      dispatch(actions.setCurSongId(songData?.encodeId));
+      dispatch(actions.isPlay(true));
+      dispatch(actions.acAlbum(true));
+      dispatch(actions.setRecentSong({ thumbnail:songData?.thumbnail,artistsNames:songData?.artistsNames,encodeId:songData?.encodeId,title:songData?.title}))
     }}
     >
       <div className="flex items-center gap-2 p-2 flex-1">
@@ -24,7 +25,7 @@ const ItemSong = ({ songData }) => {
           <img
             src={songData?.thumbnail}
             alt="thumbnail"
-            className="w-10 h-10 rounded-[4px]"
+            className="w-[45px] h-[45px] rounded-[4px]"
           />
         </div>
         <div className="flex flex-col ">

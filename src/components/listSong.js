@@ -29,7 +29,7 @@ const ListSong = ({ totalDuration }) => {
       <div className="flex text-main-100 items-center py-3 text-[13px] font-medium gap-1" >
           <span>{`${songs?.length} Bài hát`}</span>
           <span><PiDotOutlineFill size={20}/></span>
-          <span>{moment.utc(totalDuration * 1000).format('HH:mm')}</span>
+          <span>{moment.utc(totalDuration * 1000).format('mm:ss')}</span>
 
       </div>
 

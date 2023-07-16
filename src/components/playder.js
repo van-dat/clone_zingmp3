@@ -6,7 +6,7 @@ import * as actions from "../store/actions";
 import moment from "moment";
 import { toast } from "react-toastify";
 import { Loading } from "./";
-
+// import {useNavigate} from 'react-router-dom'
 var Interval;
 const Playder = ({ setShow, show }) => {
   const {
@@ -29,6 +29,7 @@ const Playder = ({ setShow, show }) => {
   const hover_bg = "p-[6px] rounded-[20px] hover:bg-hover cursor-pointer";
   const click_toger =
     "p-[6px] rounded-[20px] text-play hover:bg-hover cursor-pointer";
+    // const Navigate = useNavigate()
   const dispatch = useDispatch();
   const { curSongId, isPlaying, songs } = useSelector((state) => state.music);
   const [songInfo, setsongInfo] = useState(null);
@@ -41,7 +42,6 @@ const Playder = ({ setShow, show }) => {
 
   const thum = useRef();
   const trackBar = useRef();
-
   useEffect(() => {
     const fetchDataSong = async () => {
       setisloading(false);
@@ -53,6 +53,7 @@ const Playder = ({ setShow, show }) => {
       setisloading(true);
       if (result1.data.err === 0) {
         setsongInfo(result1.data.data);
+        dispatch(actions.setCurSongdata(result1.data.data))
       }
       if (result2.data.err === 0) {
         audio.load();
@@ -139,6 +140,8 @@ const Playder = ({ setShow, show }) => {
     audio.play();
   };
   const handleClickNext = () => {
+    audio.pause()
+    dispatch(actions.isPlay(false));
     if (songs) {
       var indexSong;
       songs?.forEach((item, index) => {
@@ -155,7 +158,7 @@ const Playder = ({ setShow, show }) => {
     dispatch(actions.isPlay(true));
   };
   return (
-    <div className="px-5 flex h-full  ">
+    <div className="px-5 flex h-full cursor-pointer" >
       <div className="w-[30%] flex-auto flex items-center gap-4">
         <img
           src={songInfo?.thumbnail}

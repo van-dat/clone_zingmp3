@@ -20,6 +20,7 @@ const Playlist = () => {
     const fetchDataPlayList = async () => {
       const reponse = await apis.apiGetDetailPlayList(pid);
       dispatch(actions.loading(false))
+      dispatch(actions.setCurAlbumId(pid))
       if (reponse?.data.err === 0) {
         setplayList(reponse?.data?.data);
         dispatch(actions.playAlbum(reponse?.data?.data?.song?.items));
@@ -41,12 +42,12 @@ const Playlist = () => {
   return (
     <div className="flex flex-col overflow-hidden px-14 py-8  ">
       <div className="flex w-full gap-6">
-        <div className="w-[30%] flex-none flex gap-3 flex-col  ">
-          <div className="w-full overflow-hidden relative group/edit hover:rounded-lg">
+        <div className="w-[30%] flex gap-3 flex-col items-center  ">
+          <div className=" h-[300px] w-[300px]  overflow-hidden relative group/edit hover:rounded-lg">
             <img
               src={playList?.thumbnailM}
               alt="thumbnail"
-              className="shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up"
+              className=" shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up"
             />
             <div className=" w-full absolute top-0 bottom-0 left-0 right-0 group-hover/edit:bg-bg-layd   group-hover/edit:visible">
               <span className="flex h-full justify-center items-center text-white">
