@@ -13,6 +13,12 @@ const Path = {
     SEARCH_ALL :'tat-ca',
     SEARCH_SONG:'bai-hat',
     SEARCH_ALBUM:'playlist',
+    SEARCH_ARTIST:'artist',
+    SEARCH_MV:'video',
+    ARTIST :':singer',
+    ARTISTA:'nghe-si/:singer',
+    
+
 
 }
 

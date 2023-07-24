@@ -12,6 +12,7 @@ const actionType =  {
     PLAY : 'PLAY',
     SET_ALBUM:'SET_ALBUM',
     PLAYLIST_ALBUM :'PLAYLIST_ALBUM',
+    SCROLL : 'SCROLL'
 
 
 }

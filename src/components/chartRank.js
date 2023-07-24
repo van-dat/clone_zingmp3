@@ -1,5 +1,4 @@
 import React, { memo, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 import icons from "../ultis/icon";
 import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
@@ -8,9 +7,8 @@ import _ from "lodash";
 import Path from "../ultis/path";
 import { useNavigate, Link } from "react-router-dom";
 
-const ChartRank = () => {
+const ChartRank = ({iszingChart, chart,rank }) => {
   const Navigate = useNavigate()
-  const { chart, rank } = useSelector((state) => state.app);
   const { RiPlayMiniFill } = icons;
   const [data, setDataChart] = useState({ datasets: [] });
   const chartRep = useRef();
@@ -27,7 +25,7 @@ const ChartRank = () => {
 
     scales: {
       y: {
-        ticks: { display: false, stepSize: 6000 },
+        ticks: { display: false, stepSize: 3500 },
         grid: {
           drawTicks: false,
           color: "rgba(255,255,255,.2)",
@@ -121,10 +119,11 @@ const ChartRank = () => {
     }
   }, [chart]);
   return (
-    <div className="flex p-9 relative h-[400px] max-h-[400px] rounded-md  ">
-      <div className="absolute top-4 bottom-9 left-9 right-9 bg-chart-bg rounded-md "></div>
-      <div className="absolute top-4 bottom-9 left-9 right-9 bg-chart p-3 rounded-md flex flex-col gap-5 ">
+    <div className={`${iszingChart ? 'px-0 flex p-9 relative h-[400px]  rounded-md' : 'p-9 flex  relative h-[400px]  rounded-md'} ` }>
+      {!iszingChart && <div className="absolute top-4 bottom-9 left-9 right-9 bg-chart-bg rounded-md "></div>}
+      <div className={`${iszingChart? 'bg-transparent' : ' bg-chart '}  absolute top-4 bottom-9 left-9 right-9 p-3 rounded-md flex flex-col gap-5`}>
         {/* ZINGCHART */}
+        {!iszingChart && 
         <div className="flex items-center gap-2">
           <Link to={Path.ZINGCHART} >
           <h3 className="bg-gradient-to-r text-2xl font-bold bg-clip-text text-transparent from-[#ff9357] from-10% to-[#9100ff]">
@@ -134,10 +133,10 @@ const ChartRank = () => {
           <span className="p-[2px] rounded-full bg-white  ">
             <RiPlayMiniFill size={18} />
           </span>
-        </div>
-        <div className="flex gap-3">
+        </div>}
+        <div className="flex gap-3 p-2 h-[500px]">
           {/* TOP */}
-          <div className="flex-4 flex flex-col w-full  gap-2 ">
+          {!iszingChart && <div className="flex-4 flex flex-col w-full  gap-2 ">
             {rank?.items
               ?.filter((item, index) => index < 3)
               ?.map((item, index) => (
@@ -160,8 +159,9 @@ const ChartRank = () => {
               <div className="flex justify-center items-center text-main  ">
                 <span className=" border rounded-2xl px-4 py-1 cursor-pointer  " onClick={()=>Navigate(Path.ZINGCHART)}>Xem thêm</span>
               </div>
-          </div>
-          <div className="flex-6  h-[95%] w-full  text-xs relative  ">
+          </div>}
+          {/* chartRank */}
+          <div className='flex-6  h-[95%] w-full  text-xs relative'>
             {data && <Line options={options} ref={chartRep} data={data} />}
             <div
               className="tooltip"

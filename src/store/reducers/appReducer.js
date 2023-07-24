@@ -1,3 +1,4 @@
+import { acAlbum } from "../actions";
 import actionType from "../actions/acitonType";
 
 
@@ -11,7 +12,8 @@ const initState = {
     weekChart : {},
     AlbumHot:{},
     rank : {},
-    chart : {}
+    chart : {},
+    isScroll: true
 
 }
 const appReducer = (state = initState, action) => {
@@ -36,6 +38,11 @@ const appReducer = (state = initState, action) => {
                 ...state,
                 isLoading : action.flag
             };
+        case actionType.SCROLL:
+            return {
+                ...state,
+                isScroll : action.flag
+            }
     
         default:
             return state;

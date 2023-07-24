@@ -44,7 +44,8 @@ export const setSearch = (keyword) => async (dispatch) => {
     if(reponse?.data?.err === 0) {
         dispatch({
             type:actionType.SEARCH,
-            data:reponse?.data?.data
+            data:reponse?.data?.data,
+            keyword
         })
     }else{
         dispatch({
@@ -56,6 +57,50 @@ export const setSearch = (keyword) => async (dispatch) => {
     dispatch({
         type: actionType.SEARCH,
         data: null
+    })
+  }
+};
+export const setArtistSong = (songerId) => async (dispatch) => {
+  try {
+    const reponse = await api.apiArtistSong(songerId)
+    // console.log('a',reponse)
+    if(reponse?.data?.err === 0) {
+        dispatch({
+            type:actionType.PLAYLIST_ALBUM,
+            songs:reponse?.data?.data?.items
+        })
+    }else{
+        dispatch({
+            type:actionType.PLAYLIST_ALBUM,
+            songs:null
+        })
+    }
+  } catch (error) {
+    dispatch({
+        type: actionType.SET_CUR_ALBUM_ID,
+        pid: null
+    })
+  }
+};
+export const setArtist = (name) => async (dispatch) => {
+  try {
+    const reponse = await api.apiArtistSong(name)
+    // console.log('a',reponse)
+    if(reponse?.data?.err === 0) {
+        dispatch({
+            type:actionType.PLAYLIST_ALBUM,
+            songs:reponse?.data?.data?.items
+        })
+    }else{
+        dispatch({
+            type:actionType.PLAYLIST_ALBUM,
+            songs:null
+        })
+    }
+  } catch (error) {
+    dispatch({
+        type: actionType.SET_CUR_ALBUM_ID,
+        pid: null
     })
   }
 };

@@ -9,6 +9,11 @@ export {default as Search} from "./Search"
 export {default as SearchSong} from "./SearchSong.js"
 export {default as SearchPlaylist} from "./SearchPlaylist"
 export {default as SearchAll} from "./SearchAll"
+export {default as SearchArtist} from "./SearchArtist"
+export {default as SearchMV} from "./SearchMV"
+export {default as Artist} from "./Artist"
+
+
 
 
 

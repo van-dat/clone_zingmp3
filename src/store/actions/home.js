@@ -21,3 +21,7 @@ export const getHome = () => async (dispath) =>{
         })
     }
 }
+export const getScroll = (flag) => ({
+    type: actionType.SCROLL,
+    flag
+})

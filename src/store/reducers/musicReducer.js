@@ -8,7 +8,8 @@ const initState = {
   songs: null,
   curAlbumId: null,
   recentSong: [],
-  searchData : {}
+  searchData : {},
+  keyword: null
 };
 const musicReduce = (state = initState, action) => {
   switch (action.type) {
@@ -61,6 +62,7 @@ const musicReduce = (state = initState, action) => {
       return {
         ...state,
         searchData: action.data || {},
+        keyword : action.keyword || ''
       };
     default:
       return state;

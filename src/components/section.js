@@ -1,5 +1,4 @@
 import React, { memo } from "react";
-import { useNavigate } from "react-router-dom";
 import { AudioLoad, SectionItem } from "./";
 
 const Section = ({ data  }) => {
@@ -11,7 +10,7 @@ const Section = ({ data  }) => {
         <span className="text-xs font-medium text-main-100">TẤT CẢ</span>
       </div>
       <SectionItem
-        data={data?.items}
+        data={data?.items?.filter((i, index) => index < 5)}
       />
     </div>
   );

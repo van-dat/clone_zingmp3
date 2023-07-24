@@ -40,5 +40,28 @@ export const sidbarMenu = [
     icons: <AiOutlineStar size={24} />,
   },
 ];
+export const SiderSearch = [
+  {
+    path: "tat-ca",
+    text: "TẤT CẢ",
+    isActive : true
+  },
+  {
+    path: "bai-hat",
+    text: "BÀI HÁT",
+  },
+  {
+    path: "playlist",
+    text: "PLAYLIST/ALBUM",
+  },
+  {
+    path: "artist",
+    text: "NGHỆ SĨ/OA",
+  },
+  {
+    path: "video",
+    text: "MV",
+  }
+];
 
 export default sidbarMenu;

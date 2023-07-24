@@ -5,7 +5,6 @@ import { Songs, SectionItem, Artists } from "../../components";
 
 const SearchAll = () => {
   const { searchData } = useSelector((state) => state.music);
-  console.log(searchData);
   return (
     <div className="px-9 py-6 flex flex-col gap-10">
       <div className="flex flex-col text-[#ddd] gap-6">
@@ -84,7 +83,7 @@ const SearchAll = () => {
         </div>
         <div className="flex ">
           <SectionItem
-            data={searchData?.playlists?.filter((i, index) => index < 6)}
+            data={searchData?.playlists}
             Style="text-main text-sm font-bold hover:text-btn"
           />
         </div>

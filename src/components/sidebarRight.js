@@ -25,7 +25,6 @@ const SidebarRight = () => {
     if(isPlaying) setactive(false)
     
   }, [isPlaying]);
-  console.log(recentSong)
 
   return (
     <div className=" h-screen bg-sidebar-rigth w-full flex flex-col text-xs animate-slide-left text-[#ddd] relative border-l border-bf  ">
@@ -38,7 +37,7 @@ const SidebarRight = () => {
               }`}
               onClick={() => setactive(0)}
             >
-              Danh sách phát{" "}
+              Danh sách phát
             </span>
             <span
               className={`px-4 py-[6px]  rounded-full text-md cursor-pointer ${
@@ -47,7 +46,7 @@ const SidebarRight = () => {
               }`}
               onClick={() => setactive(1)}
             >
-              Nghe gần đây{" "}
+              Nghe gần đây
             </span>
           </div>
           <span className="p-2 rounded-full bg-main-100 cursor-pointer">

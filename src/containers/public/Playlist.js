@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import * as apis from "../../api";
 import moment from "moment";
@@ -15,6 +15,7 @@ const Playlist = () => {
   const dispatch = useDispatch();
   const [playList, setplayList] = useState({});
   const { isPlaying } = useSelector((state) => state.music);
+  const ref = useRef()
   useEffect(() => {
     dispatch(actions.loading(true))
     const fetchDataPlayList = async () => {
@@ -28,6 +29,9 @@ const Playlist = () => {
     };
 
     fetchDataPlayList();
+
+
+    ref.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
   }, [pid]);
 
   useEffect(() => {
@@ -40,8 +44,8 @@ const Playlist = () => {
 
 
   return (
-    <div className="flex flex-col overflow-hidden px-14 py-8  ">
-      <div className="flex w-full gap-6">
+    <div className="flex flex-col overflow-hidden px-14 pb-8 pt-[102px] " >
+      <div className="flex w-full gap-6 " >
         <div className="w-[30%] flex gap-3 flex-col items-center  ">
           <div className=" h-[300px] w-[300px]  overflow-hidden relative group/edit hover:rounded-lg">
             <img
@@ -69,13 +73,12 @@ const Playlist = () => {
             )}K người yêu thích`}</span>
           </div>
         </div>
-        <div className="flex-auto ">
-          <div className="text-sm">
+        <div className="flex-1 ">
+          <div className="text-sm" ref={ref}>
             <span className="text-main-100">Lời tựa </span>
             <span className="text-main">{playList?.sortDescription}</span>
           </div>
           <ListSong
-            songs={playList?.song?.items}
             totalDuration={playList?.song?.totalDuration}
           />
         </div>

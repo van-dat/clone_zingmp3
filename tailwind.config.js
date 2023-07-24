@@ -12,8 +12,12 @@ module.exports = {
         'main-100' : '#ffffff80',
         'play':'#c273ed',
         'main-200':'#c273e',
-        'btn':'#9b4de0'
+        'btn':'#9b4de0',
+        'number' : 'rgba(74,144,226,0)',
 
+      },
+      backgroundImage : {
+        'banner' : "url('/src/img/baner.jpg')"
       },
       backgroundColor: {
         main:'#170f23',
@@ -28,7 +32,10 @@ module.exports = {
         'search':'#170f23cc',
         'chart':'rgba(51,16,76,.95)',
         'chart-bg':'#2b273f',
-        'active' : '#ffffff4d'
+        'active' : '#ffffff4d',
+        'alpha-layout-bg':'rgba(41,21,71,0.8)',
+        'banner1' : 'rgba(32,19,53,0.9)',
+        'rank': 'rgb(255 255 255 / 5%)'
       },
       borderColor: {
         default:'#ffffff1a',
