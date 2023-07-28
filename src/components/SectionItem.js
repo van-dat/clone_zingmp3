@@ -10,13 +10,13 @@ const SectionItem = ({ data, Style, number, year }) => {
   const { isPlaying } = useSelector((state) => state.music);
   const n = number || 5;
   return (
-    <div className="w-full flex items-center flex-wrap ">
+    <div className="w-full flex items-center  ">
       {data &&
         data?.length > 0 &&
         data
           ?.filter((i, index) => index < n)
           .map((item, index) => (
-            <div key={item.encodeId} className="w-1/5 flex-col flex gap-2 px-3 ">
+            <div key={item.encodeId} className="w-1/3 flex flex-col gap-2 px-3 min-[1024px]:w-1/5 ">
               <div
                 className="cursor-pointer overflow-hidden relative group/edit hover:rounded-md "
                 onClick={() => {
@@ -47,16 +47,16 @@ const SectionItem = ({ data, Style, number, year }) => {
                   )}
                 </div>
               </div>
-              <div className="text-sm text-main-100 flex-col flex gap-1 ">
+              <div className="text-sm text-main-100 flex-col flex gap-1 w-full  ">
                 <span className={Style}>{`${
-                  item.title?.length > 26
-                    ? `${item.title?.slice(0, 22)}...`
+                  item.title?.length > 16
+                    ? `${item.title?.slice(0, 16)}...`
                     : `${item.title}`
                 }`}</span>
                 {!item.uid ? (
-                  <span>{`${item.sortDescription?.slice(0, 26)}...`}</span>
+                  <span className="hidden min-[1024px]:block">{`${item.sortDescription?.slice(0, 26)}...`}</span>
                 ) : year ?  (
-                  <span className="text-xs">{item.releaseDateText}</span>
+                  <span className="text-xs ">{item.releaseDateText}</span>
                 ):  (
                   <span className="text-xs">{item.artistsNames}</span>
                 )}

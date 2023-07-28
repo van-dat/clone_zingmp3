@@ -38,7 +38,7 @@ input[type="range"] {
   -webkit-appearance: none;
   /* Ẩn giao diện mặc định trong WebKit/Blink */
   width: 70px;
-  height: 3px;
+  height: 6px;
   background: #ffffff1a;
   /* Màu nền của thanh track */
   border-radius: 5px;
@@ -48,11 +48,18 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 10px;
   height: 10px;
-  background: #ddd;
+  background: #fff;
   border-radius: 50%;
   cursor: pointer;
 }
-
+// input[type="range"]::-webkit-slider-runnable-track:active {
+//   background-color: #fff; /* Set the background color of the track when thumb is active */
+//   height: 6px;
+// }
+// input[type="range"]::-webkit-slider-runnable-track {
+//   background-color: #ffffff1a; /* Set the background color of the track */
+//   height: 6px;
+// }
 .text-shadow-1 {
   text-shadow:
     1px 1px 0  transparent,

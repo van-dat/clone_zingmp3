@@ -15,7 +15,7 @@ export const sidbarMenu = [
     icons: <MdOutlineLibraryMusic size={24} />,
   },
   {
-    path: "",
+    path: "/",
     test: "Khám phá",
     icons: <RiDonutChartLine size={24} />,
   },
@@ -53,6 +53,7 @@ export const SiderSearch = [
   {
     path: "playlist",
     text: "PLAYLIST/ALBUM",
+
   },
   {
     path: "artist",
@@ -63,5 +64,22 @@ export const SiderSearch = [
     text: "MV",
   }
 ];
+
+export const btnAll = [
+  {
+    keywork: "all",
+    text: "TẤT CẢ",
+    isActive : true
+  },
+  {
+    keywork: "vpop",
+    text: "VIỆT NAM",
+  },
+  {
+    keywork: "others",
+    text: "QUỐC TẾ",
+  },
+];
+
 
 export default sidbarMenu;

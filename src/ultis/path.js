@@ -17,6 +17,7 @@ const Path = {
     SEARCH_MV:'video',
     ARTIST :':singer',
     ARTISTA:'nghe-si/:singer',
+    NEWRELEASE : 'new-release/song'
     
 
 

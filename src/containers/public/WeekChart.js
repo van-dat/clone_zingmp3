@@ -5,7 +5,7 @@ import {ItemSong} from '../../components'
 const { RiPlayMiniFill } = icons;
 const WeekChart = ({ weekChart }) => {
     const {pid} = useParams()
-  console.log(weekChart,pid);
+  console.log(weekChart);
   console.log(weekChart?.find(i => i.link?.includes(pid)).items)
   const activeStyle =
     "text-2xl font-bold text-main py-4 border-b-4 border-[#9b4de0]";

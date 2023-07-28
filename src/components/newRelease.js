@@ -1,12 +1,14 @@
 import React, { memo, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Songs } from "./";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
-const NewRelease = () => {
+const NewRelease = () => { 
   const { newRelease } = useSelector((state) => state.app);
+  const navigate = useNavigate()
   const [isActive, setisActive] = useState(0);
   const [songArea, setsongArea] = useState([]);
-
+console.log(newRelease)
   useEffect(() => {
     !isActive
       ? setsongArea(newRelease?.items?.all)
@@ -18,7 +20,14 @@ const NewRelease = () => {
     <div className="px-9 py-5 flex flex-col gap-2 ">
       <div className="flex justify-between items-center  pb-2 ">
         <h3 className="text-main text-xl font-bold">{newRelease?.title}</h3>
-        <span className="text-xs font-medium text-main-100">TẤT CẢ</span>
+        <h3 className="text-xs font-medium text-main-100 cursor-pointer hover:text-btn"
+          onClick={()=>navigate({
+            pathname: newRelease.link,
+            search: createSearchParams({
+              filter: 'all',
+            }).toString(),
+          })}
+        >TẤT CẢ</h3>
       </div>
       <div className="flex gap-3 text-white pb-2">
         <button

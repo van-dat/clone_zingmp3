@@ -12,6 +12,8 @@ export {default as SearchAll} from "./SearchAll"
 export {default as SearchArtist} from "./SearchArtist"
 export {default as SearchMV} from "./SearchMV"
 export {default as Artist} from "./Artist"
+export {default as NewRelease} from "./NewRelease"
+
 
 
 

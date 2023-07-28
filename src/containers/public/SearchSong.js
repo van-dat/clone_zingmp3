@@ -5,7 +5,6 @@ import { ListSong } from "../../components";
 
 const SearchSong = () => {
   const { searchData } = useSelector((state) => state.music);
-  console.log('c',searchData);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.setArtistSong(searchData?.top?.id));

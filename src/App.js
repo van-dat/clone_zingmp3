@@ -13,7 +13,8 @@ import {
   Search,
   SearchArtist,
   SearchMV,
-  Artist
+  Artist,
+  NewRelease
 } from "./containers/public";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
@@ -43,7 +44,7 @@ function App() {
     <>
       <div className="App ">
         <Routes>
-          <Route path={Path.PUBLIC} element={<Public />}>
+          <Route path={Path.PUBLIC} element={<Public />} >
             <Route path={Path.HOME} element={<Home />} />
             <Route path={Path.HOME1} element={<Home />} />
             <Route path={Path.MYMUSIC} element={<Personal />} />
@@ -53,6 +54,7 @@ function App() {
             <Route path={Path.ZINGCHART} element={<ZingChart />} />
             <Route path={Path.ARTIST} element={<Artist />} />
             <Route path={Path.ARTISTA} element={<Artist />} />
+            <Route path={Path.NEWRELEASE} element={<NewRelease />} />
             <Route path={Path.SEARCH} element={<Search/>}>
               <Route path={Path.SEARCH_SONG} element={<SearchSong />} />
               <Route path={Path.SEARCH_ALBUM} element={<SearchPlaylist />} />

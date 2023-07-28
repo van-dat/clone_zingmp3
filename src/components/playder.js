@@ -24,12 +24,12 @@ const Playder = ({ setShow, show }) => {
     IoVolumeHighOutline,
     IoVolumeMuteOutline,
     VscChromeRestore,
-    LiaMicrophoneAltSolid
+    LiaMicrophoneAltSolid,
   } = icons;
   const hover_bg = "p-[6px] rounded-[20px] hover:bg-hover cursor-pointer";
   const click_toger =
     "p-[6px] rounded-[20px] text-play hover:bg-hover cursor-pointer";
-    // const Navigate = useNavigate()
+  // const Navigate = useNavigate()
   const dispatch = useDispatch();
   const { curSongId, isPlaying, songs } = useSelector((state) => state.music);
   const [songInfo, setsongInfo] = useState(null);
@@ -39,9 +39,11 @@ const Playder = ({ setShow, show }) => {
   const [repeat, setrepeat] = useState(0);
   const [isloading, setisloading] = useState(false);
   const [volume, setvolume] = useState(40);
+  const [isVolume, setisVolume] = useState(false);
 
   const thum = useRef();
   const trackBar = useRef();
+  const volumehover = useRef();
   useEffect(() => {
     const fetchDataSong = async () => {
       setisloading(false);
@@ -53,7 +55,7 @@ const Playder = ({ setShow, show }) => {
       setisloading(true);
       if (result1.data.err === 0) {
         setsongInfo(result1.data.data);
-        dispatch(actions.setCurSongdata(result1.data.data))
+        dispatch(actions.setCurSongdata(result1.data.data));
       }
       if (result2.data.err === 0) {
         audio.load();
@@ -75,7 +77,7 @@ const Playder = ({ setShow, show }) => {
   useEffect(() => {
     Interval && clearInterval(Interval);
     if (isPlaying && thum.current) {
-      audio.pause()
+      audio.pause();
       audio.play();
       Interval = setInterval(() => {
         let percent =
@@ -104,7 +106,11 @@ const Playder = ({ setShow, show }) => {
   }, [audio, repeat, shuffe]);
 
   useEffect(() => {
-    audio.volume = volume /100
+    audio.volume = volume / 100;
+
+    if(volumehover.current) {
+      volumehover.current.style.cssText = `right :${100 - volume}%`
+    }
   }, [volume]);
 
   const handleClickPlay = () => {
@@ -140,7 +146,7 @@ const Playder = ({ setShow, show }) => {
     audio.play();
   };
   const handleClickNext = () => {
-    audio.pause()
+    audio.pause();
     dispatch(actions.isPlay(false));
     if (songs) {
       var indexSong;
@@ -150,7 +156,6 @@ const Playder = ({ setShow, show }) => {
       dispatch(actions.setCurSongId(songs?.[indexSong + 1]?.encodeId));
       dispatch(actions.isPlay(true));
     }
-    
   };
   const handleClickShuffe = () => {
     const random = Math.round(Math.random() * songs.length) - 1;
@@ -158,7 +163,7 @@ const Playder = ({ setShow, show }) => {
     dispatch(actions.isPlay(true));
   };
   return (
-    <div className="px-5 flex h-full cursor-pointer" >
+    <div className="px-5 flex h-full cursor-pointer">
       <div className="w-[30%] flex-auto flex items-center gap-4">
         <img
           src={songInfo?.thumbnail}
@@ -245,23 +250,51 @@ const Playder = ({ setShow, show }) => {
           </span>
         </div>
       </div>
-      <div className="w-[30%] flex items-center gap-4 justify-end text-main">
+      <div className="w-[30%] hidden min-[840px]:flex items-center gap-4 justify-end text-main">
         <div className="flex items-center gap-1 after:border-r-red-50">
           <div className="flex items-center justify-center gap-1">
-          <span className={hover_bg}><LiaMicrophoneAltSolid size={18} /></span>
-          <span className={hover_bg}><VscChromeRestore size={18} /></span>
-          <span className={hover_bg} onClick={() => setvolume(prev => +prev === 0 ? 40 : 0)}>
-            {+volume>= 50 ? <IoVolumeHighOutline size={18}/> : +volume === 0 ? <IoVolumeMuteOutline size={18}/> : <IoVolumeMediumOutline size={18} /> }
-          </span>
+            <span className={hover_bg}>
+              <LiaMicrophoneAltSolid size={18} />
+            </span>
+            <span className={hover_bg}>
+              <VscChromeRestore size={18} />
+            </span>
           </div>
-          <input
-            type="range"
-            step={1}
-            min={0}
-            max={100}
-            value={volume}
-            onChange={(e)=>setvolume(e.target.value)}
-          />
+          <div onMouseEnter={() => setisVolume(true) }
+          onMouseLeave={() => setisVolume(false)}
+          className="flex items-center gap-2">
+            <span
+              className={hover_bg}
+              onClick={() => setvolume((prev) => (+prev === 0 ? 40 : 0))}
+            >
+              {+volume >= 50 ? (
+                <IoVolumeHighOutline size={18} />
+              ) : +volume === 0 ? (
+                <IoVolumeMuteOutline size={18} />
+              ) : (
+                <IoVolumeMediumOutline size={18} />
+              )}
+            </span>
+            <div
+              className={`w-[70px] h-[3px] flex items-center bg-[#ffffff1a] rounded-full ${
+                !isVolume ? "relative" : "hidden"
+              } `}
+            >
+              <div
+                ref={volumehover}
+                className={`absolute left-0 top-0  rounded-l-full bottom-0 bg-white ${volume === 100 ? "rounded-r-full" : ''}`}
+              ></div>
+            </div>
+            <input
+              type="range"
+              step={1}
+              min={0}
+              max={100}
+              value={volume}
+              onChange={(e) => setvolume(e.target.value)}
+              className={!isVolume ? "hidden" : "inline"}
+            />
+          </div>
         </div>
         <span
           onClick={() => setShow((Prev) => !Prev)}

@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../img/logo.svg";
+import logo1 from "../img/logo1.svg";
+
 import sidbarMenu from "../ultis/menu";
 import { NavLink, useNavigate } from "react-router-dom";
 import Path from "../ultis/path";
@@ -14,8 +16,9 @@ const SidebarLeft = () => {
 
   return (
     <div className="flex h-screen flex-col">
-      <div onClick={() => Navigate(Path.HOME)} className="w-full h-[70px] px-[25px] flex justify-start items-center cursor-pointer ">
-        <img src={logo} className="w-[120px]  object-content" alt="logo" />
+      <div onClick={() => Navigate(Path.HOME)} className="w-full h-[70px] px-4 flex justify-start items-center cursor-pointer min-[1024px]:px-[25px] ">
+        <img src={logo} className="w-[120px] hidden   object-content min-[1024px]:inline " alt="logo" />
+        <img src={logo1} className=" inline   object-content min-[1024px]:hidden " alt="logo" />
       </div>
       <div>
         {sidbarMenu?.map((item) => (
@@ -26,7 +29,7 @@ const SidebarLeft = () => {
             className={({isActive}) => isActive ? activeStyle : notActiveStyle}
           >
             {item.icons}
-            <span className="font-medium text-sm">{item.test}</span>
+            <span className="font-medium text-sm hidden  min-[1024px]:inline ">{item.test}</span>
           </NavLink>
         ))}
       </div>

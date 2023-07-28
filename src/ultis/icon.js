@@ -3,6 +3,8 @@ import {
   MdOutlineCategory,
   MdSkipPrevious,
   MdSkipNext,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight
 } from "react-icons/md";
 import { RiDonutChartLine ,RiPlayMiniFill,RiUserAddLine } from "react-icons/ri";
 import { IoVolumeMediumOutline, IoVolumeMuteOutline,IoVolumeHighOutline, IoCloseOutline  } from "react-icons/io5";
@@ -61,7 +63,9 @@ const icons = {
   RiPlayMiniFill,
   TfiAlarmClock,
   RiUserAddLine,
-  IoCloseOutline
+  IoCloseOutline,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight
 };
 
 export default icons;

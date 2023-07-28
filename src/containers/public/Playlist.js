@@ -45,21 +45,21 @@ const Playlist = () => {
 
   return (
     <div className="flex flex-col overflow-hidden px-14 pb-8 pt-[102px] " >
-      <div className="flex w-full gap-6 " >
-        <div className="w-[30%] flex gap-3 flex-col items-center  ">
-          <div className=" h-[300px] w-[300px]  overflow-hidden relative group/edit hover:rounded-lg">
+      <div className=" block w-full gap-6 min-[1024px]:flex  " >
+        <div className="w-full inline-block gap-3  items-center min-[1024px]:w-[30%] min-[1024px]:flex-col  ">
+          <div className=" h-[200px] w-[200px] inline-block overflow-hidden relative group/edit hover:rounded-lg min-[1024px]:h-[300px] min-[1024px]:w-[300px]">
             <img
               src={playList?.thumbnailM}
               alt="thumbnail"
               className=" shadow-sm object-contain rounded-lg  cursor-pointer group-hover/edit:animate-scale-up"
             />
-            <div className=" w-full absolute top-0 bottom-0 left-0 right-0 group-hover/edit:bg-bg-layd   group-hover/edit:visible">
+            <div className="w-full absolute top-0 bottom-0 left-0 right-0 group-hover/edit:bg-bg-layd   group-hover/edit:visible">
               <span className="flex h-full justify-center items-center text-white">
                 {isPlaying ? <span className=" drop-shadow-lg p-2 rounded-full border border-white"><AudioLoad/></span> : <PiPlayCircleThin  size={48}/>}
               </span>
             </div>
           </div>
-          <div className="flex flex-col items-center  text-main-100 gap-1  text-xs">
+          <div className=" inline-block flex-col items-center  text-main-100 gap-1  text-xs min-[1024px]:flex">
             <h3 className="text-xl font-bold text-main ">{playList?.title}</h3>
             <span className="text-md">
               Cập nhật :
