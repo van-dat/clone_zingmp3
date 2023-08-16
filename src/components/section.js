@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { AudioLoad, SectionItem } from "./";
+import { SectionItem } from "./";
 
 const Section = ({ data  }) => {
   

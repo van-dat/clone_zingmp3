@@ -6,7 +6,7 @@ const AppLoading = () => {
     <Rings
       height="80"
       width="80"
-      color="#170f23"
+      color="#ddd"
       radius="6"
       wrapperStyle={{}}
       wrapperClass=""

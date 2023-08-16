@@ -115,7 +115,7 @@ const Slider = () => {
             }`}
             alt="slider"
             key={item.encodeId}
-          />
+          />  
         ))}
       </div>
     </div>
